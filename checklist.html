@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link rel="stylesheet" href="styles4.css">
+    <title>Student Checklist & Export</title>
+</head>
+<p>
+    <header>
+        <h1>Special Education Need (SEN) Student Classifier</h1>
+    </header>
+
+    <aside class="sidebar">
+        <ul>
+            <h2>Dashboard</h2>
+            <a href="#profile">👤 Student Profile</a>
+            <a href="#difficulties">⚠️ Difficulties</a>
+            <a href="#results">📊 Result</a>
+            <a href="#about">ℹ️ About</a>
+            <li><a href="#about">Contact</a></li>
+        </ul>
+    </aside>
+<p>This page clasifies special education need students using a student checklist and automatically export the result.</p>
+    <main class="main-content">
+        <div class="container" id="studentForm">
+            <!-- Student Profile Form: replaced two-column layout with a horizontal form -->
+            <h2 id="profile">Student Profile</h2>
+            <form class="horizontal-form" style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px;">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" placeholder="Enter first name">
+                </div>
+                <div class="form-group">
+                    <label for="middleName">Middle Name:</label>
+                    <input type="text" id="middleName" placeholder="Enter middle name">
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" placeholder="Enter last name">
+                </div>
+                <div class="form-group">
+                    <label for="sex">Sex:</label>
+                    <select id="sex">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" placeholder="Enter age">
+                </div>
+                <div class="form-group">
+                    <label for="grade">Grade:</label>
+                    <input type="text" id="grade" placeholder="Enter grade">
+                </div>
+                <div class="form-group">
+                    <label for="section">Section:</label>
+                    <input type="text" id="section" placeholder="Enter section">
+                </div>
+                <div class="form-group">
+                    <label for="teacherName">Teacher's Name:</label>
+                    <input type="text" id="teacherName" placeholder="Enter teacher's name">
+                </div>
+                <div class="form-group">
+                    <label for="photoUpload">Upload Photo:</label>
+                    <input type="file" id="photoUpload" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date">
+                </div>
+                <div class="form-group">
+                    <label for="schoolName">Name of School:</label>
+                    <input type="text" id="schoolName" placeholder="Enter school name">
+                </div>
+                <div class="form-group">
+                    <label for="region">Region:</label>
+                    <input type="text" id="region" placeholder="Enter region">
+                </div>
+                <div class="form-group">
+                    <label for="zone">Zone:</label>
+                    <input type="text" id="zone" placeholder="Enter zone">
+                </div>
+                <div class="form-group">
+                    <label for="woreda">Woreda:</label>
+                    <input type="text" id="woreda" placeholder="Enter woreda">
+                </div>
+            </form>
+
+            <!-- Difficulties Section -->
+            <h2 id="difficulties" class="shaded-text">Select the Difficulties the Student is Facing:</h2>
+            <!-- Replace the single difficulty-list container with grouped containers -->
+            <div class="difficulty-list">
+                <div class="difficulty-group_1">
+                    <h3 class="shaded-text_2">  Learning Disability</h3>
+                    <label><input type="checkbox" value="reading"> Slow reading, confusion with similar_looking words e.g., "was" vs. "saw".</label>
+                    <label><input type="checkbox" value="Spelling"> Trouble remembering sequences e.g., alphabet, numbers.</label>
+                    <label><input type="checkbox" value="Recognizing"> Poor spelling and handwriting.</label>
+                    <label><input type="checkbox" value="Fluency"> Trouble following written instructions</label>
+                    <label><input type="checkbox" value="writing_Spelling"> Illegible handwriting.</label>
+                    <label><input type="checkbox" value="Motor_Skill"> Struggles with spacing, punctuation, and writing speed.</label>
+                    <label><input type="checkbox" value="Letter_formation"> Trouble organizing ideas.</label>
+                    <label><input type="checkbox" value="Writing_Ability"> Fatigue from prolonged writing</label>
+                    <label><input type="checkbox" value="Math_Difficult"> Struggles with number recognition, sequencing, and basic operations.</label>
+                    <label><input type="checkbox" value="Understanding_Number"> Trouble memorizing multiplication tables or telling time.</label>
+                    <label><input type="checkbox" value="Math_Skill"> Difficulty with word problems</label>
+                    <label><input type="checkbox" value="Math_Symbol"> Difficulty understanding math symbols and word problems. </label>
+                    <label><input type="checkbox" value="Spoken_language"> Trouble following verbal instructions.</label>
+                    <label><input type="checkbox" value="Simila_Sound"> Difficulty distinguishing similar sounds (e.g., "cat" vs. "cap").</label>
+                    <label><input type="checkbox" value="Focusing"> Problems focusing in noisy environments.</label>
+                    <label><input type="checkbox" value="Recognizing_patterns"> Trouble recognizing shapes, letters, or patterns.</label>
+                    <label><input type="checkbox" value="Copying"> Difficulty copying from the board.</label>
+                    <label><input type="checkbox" value="Spatial"> Struggles with spatial awareness.</label>
+                    <label><input type="checkbox" value="Reversal"> Letter and number when reading or writing Difficulty copying from the board or books Struggles with reading comprehension Sensitivity to bright lights or patterns</label>
+                    <label><input type="checkbox" value="Learning_pace"> Slow learning pace.</label>
+                    <label><input type="checkbox" value="Understanding_concepts"> Difficulty understanding complex concepts.</label>
+                    <label><input type="checkbox" value="Independence activities"> Trouble with independence in daily activities.</label>
+                    <label><input type="checkbox" value="abstract_critical"> Slower learning pace Difficulty with abstract concepts and critical thinking May need support with complex tasks</label>
+                </div>
+                <div class="difficulty-group_2">
+                    <h3 class="shaded-text_2">  Intellectual Disability</h3>
+                    <label><input type="checkbox" value="Deleyed_speech"> Delayed speech and language development.</label>
+                    <label><input type="checkbox" value="Itellectual"> Difficulty with motor skills.</label>
+                    <label><input type="checkbox" value="heart_health"> Increased risk of heart problems and health issues.</label>
+                    <label><input type="checkbox" value="Hyperactive"> Difficulty with attention and hyperactivity.</label>
+                    <label><input type="checkbox" value="Language_development"> Delayed speech and language development.</label>
+                    <label><input type="checkbox" value="Eye_contact"> Social anxiety and avoidance of eye contact.</label>
+                    <label><input type="checkbox" value="Overstimulation"> Sensory processing issues, leading to overstimulation.</label>
+                    <label><input type="checkbox" value="Verbal_communication"> Delayed speech and non_verbal communication.</label>
+                    <label><input type="checkbox" value="Hand_flapping"> Repetitive behaviors (e.g., hand flapping).</label>
+                    <label><input type="checkbox" value="Loudness_brightness"> Sensory sensitivity e.g., loud noises, bright lights.</label>
+                    <label><input type="checkbox" value="Making_friends"> Difficulty with social interactions and making friends.</label>
+                    <label><input type="checkbox" value="Jokes_sarcasm"> Literal thinking or difficulty understanding jokes, sarcasm.</label>
+                    <label><input type="checkbox" value="Specific_topics"> Obsessive interests in specific topics.</label>
+                </div>
+                <div class="difficulty-group_3">
+                    <h3 class="shaded-text_2">  Autism Spectrum Disorders</h3>
+                    <label><input type="checkbox" value="Verbal_communication_2"> Delayed speech and non_verbal communication.</label>
+                    <label><input type="checkbox" value="Repetitive"> Repetitive behaviors (e.g., hand flapping).</label>
+                    <label><input type="checkbox" value="Language_social"> Difficulty understanding social cues and interactions.</label>
+                    <label><input type="checkbox" value="noise_light_texture"> Sensory sensitivities to noise, light, or textures.</label>
+                    <label><input type="checkbox" value="regid_resistance"> Rigid thinking and resistance to changes in routine.</label>
+                    <label><input type="checkbox" value="verbal_non_verbal"> Challenges with verbal and nonverbal communication.</label>
+                </div>
+                <div class="difficulty-group_4">
+                    <h3 class="shaded-text_2">  Attention and Behavioral Disorders</h3>
+                    <label><input type="checkbox" value="Inability_focusing"> Inability to focus, easily distracted.</label>
+                    <label><input type="checkbox" value="attention_hyperactive"> Impulsive behavior and difficulty waiting turns.</label>
+                    <label><input type="checkbox" value="fidgeting"> Hyperactivity (constantly moving or fidgeting.</label>
+                    <label><input type="checkbox" value="Authority_figures"> Frequent anger, arguing with authority figures.</label>
+                    <label><input type="checkbox" value="Defying"> Defying rules and instructions.</label>
+                    <label><input type="checkbox" value="Easily_frustrated"> Easily frustrated.</label>
+                    <label><input type="checkbox" value="rule_instructions"> Difficulty following rules and instructions.</label>
+                    <label><input type="checkbox" value="Aggressive_behavior"> Frequent outbursts or aggressive behavior.</label>
+                    <label><input type="checkbox" value="relationships"> Trouble forming positive relationship with peers and teachers.</label>
+                    <label><input type="checkbox" value="impulse_control"> Lack of impulse control and difficulty managing emotions.</label>
+                </div>
+                <div class="difficulty-group_5">
+                    <h3 class="shaded-text_2">  Speech and Language Disorders</h3>
+                    <label><input type="checkbox" value="Speech_delay"> Limited vocabulary and difficulty expressing needs.</label>
+                    <label><input type="checkbox" value="Social_settings"> Frustration or anxiety in social settings.</label>
+                    <label><input type="checkbox" value="Understanding_instructions"> Struggles with understanding instructions.</label>
+                    <label><input type="checkbox" value="reading_and_writing"> Possible impact on reading and writing skills.</label>
+                    <label><input type="checkbox" value="flow_speech"> Anxiety or embarrassment when speaking in class.</label>
+                    <label><input type="checkbox" value="Speech_disorder"> Difficulty participating in oral presentations or discussions.</label>
+                    <label><input type="checkbox" value="Being_teased"> Social withdrawal due to fear of being teased.</label>
+                    <label><input type="checkbox" value="Express_thoughts_frustration"> Frustration when struggling to express thoughts.</label>
+                    <label><input type="checkbox" value="mouth_movement"> Difficulty coordinating mouth movements for speech.</label>
+                    <label><input type="checkbox" value="Speech_patterns"> Inconsistent speech patterns.</label>
+                    <label><input type="checkbox" value="Spoken_language_2"> Struggles to understand spoken language.</label>
+                </div>
+                <div class="difficulty-group_6">
+                    <h3 class="shaded-text_2">  Sensory Impairments</h3>
+                    <label><input type="checkbox" value="partial_visual_impairment"> Partial or complete loss of vision affecting learning.</label>
+                    <label><input type="checkbox" value="hearing_lose"> Hearing loss affecting communication.</label>
+                    <label><input type="checkbox" value="sensory_iformation_1"> Overreaction to sounds, lights, or textures e.g., loud noises may be distressing.</label>
+                    <label><input type="checkbox" value="sensory_iformation_2">  Difficulty receiving and responding </label>
+                    <label><input type="checkbox" value="sensory_iformation_3"> Students with over-sensitive or under-sensitive to sights, sounds, textures, smells, tastes, or movement. </label>
+                    <label><input type="checkbox" value="Be_distressing"> Affect their ability to focus, participate in class, and regulate emotions.</label>
+                    <label><input type="checkbox" value="Motor_coordination"> Difficulty with fine and gross motor coordination.</label>
+                    <label><input type="checkbox" value="Under_stimulation"> Trouble focusing due to sensory overload or under_stimulation.</label>
+                    <label><input type="checkbox" value="Crowded_hallways"> Anxiety or frustration in busy environments e.g., crowded hallways.</label>
+                    <label><input type="checkbox" value="transition"> Difficulty with transitions and changes in routine.</label>
+                    <label><input type="checkbox" value="avoidance_activities"> Avoidance of certain activities. e.g. messy play, loud group work</label>
+                </div>
+                <div class="difficulty-group_7">
+                    <h3 class="shaded-text_2">  Physical Disabilities</h3>
+                    <label><input type="checkbox" value="Impaired_movement"> Impaired movement, speech difficulties.</label>
+                    <label><input type="checkbox" value="Muscle_weakness"> Progressive muscle weakness.</label>
+                    <label><input type="checkbox" value="Spinal_cord"> Limited mobility, requiring assistive devices or support.</label>
+                    <label><input type="checkbox" value="Spina_Bifida"> Possible bowel and bladder control issues.</label>
+                    <label><input type="checkbox" value="fine_motor_skill"> Weakness in fine motor skills affecting writing and handling objects.</label>
+                    <label><input type="checkbox" value="Physical_differences"> Social isolation due to physical differences.</label>
+                    <label><input type="checkbox" value="Disrupting_learning"> Risk of seizures disrupting learning.</label>
+                    <label><input type="checkbox" value="epilepsy_confusion"> Fatigue or confusion after a seizure.</label>
+                    <label><input type="checkbox" value="epilepsy_anxiety"> Anxiety about having a seizure in public.</label>
+                    <label><input type="checkbox" value="epilepsy_med_side_effect"> Medication side effects like drowsiness or memory issues.</label>
+                </div>
+                <div class="difficulty-group_8">
+                    <h3 class="shaded-text_2">  Emotional and Mental Health Conditions</h3>
+                    <label><input type="checkbox" value="excessive_fear"> Excessive fear, difficulty concentrating.</label>
+                    <label><input type="checkbox" value="mood_disorder"> Low energy, withdrawal.</label>
+                    <label><input type="checkbox" value="extreme_mood"> Sudden mood changes affecting learning and social interactions.</label>
+                    <label><input type="checkbox" value="concentrating"> Difficulty concentrating and completing assignments.</label>
+                    <label><input type="checkbox" value="risk_taking "> Impulsivity and risk_taking behavior.</label>
+                    <label><input type="checkbox" value="Sleep_disturbances "> Sleep disturbances leading to fatigue and reduced academic performance.</label>
+                    <label><input type="checkbox" value="withdrawn"> Easily startled, anxious, or withdrawn in class.</label>
+                    <label><input type="checkbox" value="Remembering_instructions"> Difficulty concentrating or remembering instructions.</label>
+                    <label><input type="checkbox" value="Emotional_distress"> Fear of certain triggers that may cause emotional distress.</label>
+                    <label><input type="checkbox" value="avoidance"> Avoidance of social interactions or classroom participation.</label>
+                </div>
+                <div class="difficulty-group_9">
+                    <h3 class="shaded-text_2">  Multiple Disabilities</h3>
+                    <label><input type="checkbox" value="multiple_disabilities"> Combination of two or more disabilities affecting learning and daily activities e.g., intellectual disability with physical impairment.</label>
+                    <label><input type="checkbox" value="multiple_disabilities_2"> Some students have more than one disability. e.g. intellectual disability and hearing impairment</label>                
+                </div>
+            </div>
+
+            <!-- Classify and export buttons -->
+            <button onclick="classifyStudent()">Classify Student</button>
+            <button onclick="exportToCSV()">Export to CSV</button>
+            <button onclick="exportToJPG()">Export to JPG</button>
+            <button onclick="exportToWord()">Export to Word</button>  <!-- new button added -->
+            <button onclick="clearForm()">Clear Form</button>
+            <!-- New Print Results Button -->
+            <button onclick="printResults()">Print Results</button>
+
+            <!-- Results Section -->
+            <div class="result" id="results">
+                <h2 id="resultHeading">Student Profile and Classification Results:</h2>
+                <div id="reportCard">
+                    <table>
+                        <tr>
+                            <th>Profile</th>
+                            <th>Value</th>
+                        </tr>
+                        <tr>
+                            <td>Name:-</td>
+                            <td id="displayName"></td>
+                        </tr>
+                        <tr>
+                            <td>Sex:-</td>
+                            <td id="displaySex"></td>
+                        </tr>
+                        <tr>
+                            <td>Age:-</td>
+                            <td id="displayAge"></td>
+                        </tr>
+                        <tr>
+                            <td>Grade:-</td>
+                            <td id="displayGrade"></td>
+                        </tr>
+                        <tr>
+                            <td>Section:-</td>
+                            <td id="displaySection"></td>
+                        </tr>
+                        <tr>
+                            <td>Teacher's Name:-</td>
+                            <td id="displayTeacher"></td>
+                        </tr>
+                        <tr>
+                            <td>Date:-</td>
+                            <td id="displayDate"></td>
+                        </tr>
+                        <tr>
+                            <td>School Name:-</td>
+                            <td id="displaySchoolName"></td>
+                        </tr>
+                        <tr>
+                            <td>Region:-</td>
+                            <td id="displayRegion"></td>
+                        </tr>
+                        <tr>
+                            <td>Zone:-</td>
+                            <td id="displayZone"></td>
+                        </tr>
+                        <tr>
+                            <td>Woreda:-</td>
+                            <td id="displayWoreda"></td>
+                        </tr>
+                    </table>
+                    <!-- New Image element to display the photo -->
+                    <div id="photoContainer">
+                        <img id="displayPhoto" src="" alt="Student Photo" style="max-width: 200px;">
+                    </div>
+                    <h3 class="shaded-text_2">  Possible Conditions and Suggested Interventions:</h3>
+                    <ul id="conditions"></ul>
+                </div>
+            </div>
+            <h2>Address:-  Arat Kilo</h2>
+            <iframe 
+                src="https://www.google.com/maps?q=9.0329167,38.7628889&z=15&output=embed" allowfullscreen>
+            </iframe>
+        </div>
+    </main>
+
+    <footer id="about">
+        <p> 2025 Special Education Need Student Classifier. All rights reserved.</p>
+        <p>&copy; Dagimena</p>    <p>Address: Arat Kilo, Addis Ababa, Ethiopia  email: menadagi@gmail.com / alamerewu.aklilu@ethernet.edu.et</p>
+        <p>Telephone: +251 9130 52618</p>
+    </footer>
+
+    <script src="javascript.js"></script>
+    <!-- Replace the DOMContentLoaded script to process each group separately -->
+    <script>
+    // filepath: c:\Users\Alamerewu\Desktop\Special education needs\App\checklist.html
+    document.addEventListener('DOMContentLoaded', function() {
+        const groups = document.querySelectorAll('.difficulty-group');
+        groups.forEach(function(group) {
+            const labels = Array.from(group.querySelectorAll('label'));
+            let tableHTML = '<table>';
+            labels.forEach(label => {
+                tableHTML += '<tr><td>' + label.outerHTML + '</td></tr>';
+            });
+            tableHTML += '</table>';
+            group.innerHTML = tableHTML;
+        });
+    });
+    
+    // New printResults Function
+    function printResults() {
+        var printContents = document.getElementById('results').innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+    </script>
+ 
+</body>
+</html>
